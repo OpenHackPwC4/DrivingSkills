@@ -5,11 +5,11 @@ on:
   push:
     branches: [ main ]
     paths:
-    - 'apis/poi/*'
+    - 'apis/poi/**'
   pull_request:
     branches: [ main ]
     paths:
-    - 'apis/poi/*'
+    - 'apis/poi/**'
 
 jobs:
   build:
