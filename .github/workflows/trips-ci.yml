@@ -1,4 +1,4 @@
-name: trips-ci
+name: tripsci
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: trips-ci-job
+    name: tripscijob
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
