@@ -39,3 +39,8 @@ To run all integration tests:
   ```
 
 > Note: this requires an actual database connection, so the required ENV variables need to be present.
+
+# Pipeline
+
+Created a new Pipeline that should trigger on POI-Api changes.
+It should build and test the changes in POI-Api dot net application.
