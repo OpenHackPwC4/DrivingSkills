@@ -39,3 +39,7 @@ To run all integration tests:
   ```
 
 > Note: this requires an actual database connection, so the required ENV variables need to be present.
+
+# Pipeline
+
+Created a new Pipeline that should trigger on POI-Api changes
