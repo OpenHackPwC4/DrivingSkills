@@ -1,6 +1,7 @@
 name: poi-ci
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
     paths:
@@ -22,8 +23,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
+      working-directory: apis/poi/
       run: dotnet restore
     - name: Build
+      working-directory: apis/poi/
       run: dotnet build --no-restore
     - name: Test
+      working-directory: apis/poi/
       run: dotnet test --no-build --verbosity normal
