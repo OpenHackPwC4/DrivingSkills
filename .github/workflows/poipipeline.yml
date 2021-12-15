@@ -1,0 +1,46 @@
+name: poipipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "apis/poi/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "apis/poi/**"
+
+jobs:
+  build:
+    name: poipipelinejob
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - name: Restore dependencies
+        working-directory: apis/poi/
+        run: dotnet restore
+      - name: Build
+        working-directory: apis/poi/
+        run: dotnet build --no-restore
+      - name: Test
+        working-directory: apis/poi/tests/UnitTests
+        run: dotnet test --no-build --verbosity normal
+      - name: The job has failed
+        uses: stefanstranger/azuredevops-bug-action@1.1
+        if: failure()
+        with:
+          OrganizationName: "OpenHackPwC4"
+          PAT: "PAT"
+          ProjectName: "DrivingSkills"
+          AreaPath: "DrivingSkills"
+          IterationPath: "DrivingSkills"
+          GithubToken: "GithubToken"
+          WorkflowFileName: "poipipeline.yml"
+        env:
+          PAT: ${{ secrets.PAT}}
+          GithubToken: ${{ secrets.githubtoken}}
