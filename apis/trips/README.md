@@ -42,4 +42,5 @@ To run all integration tests:
 
 # Pipeline
 
-Created a new Pipeline that should trigger on POI-Api changes
+Created a new Pipeline that should trigger on POI-Api changes.
+It should build and test the changes in POI-Api dot net application.
