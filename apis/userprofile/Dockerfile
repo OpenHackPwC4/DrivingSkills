@@ -16,4 +16,6 @@ ENV APP_VERSION=$build_version
 
 RUN npm install
 
-CMD npm start
+CMD npm start 
+
+#Just to test
