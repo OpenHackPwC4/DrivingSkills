@@ -5,12 +5,12 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - "apis/userjava/**"
+      - "apis/user-java/**"
 
 defaults:
   run:
     shell: bash
-    working-directory: apis/userjava/
+    working-directory: apis/user-java/
 
 env: 
     JAVA_VERSION: '1.8'

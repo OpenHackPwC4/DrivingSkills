@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
     paths-ignore:
-      - "apis/userjava/**"
+      - "apis/user-java/**"
 jobs:
   build:
     name: userjava-pr-job
