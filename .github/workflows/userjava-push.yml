@@ -1,0 +1,34 @@
+name: userjava-push
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "apis/userjava/**"
+
+defaults:
+  run:
+    working-directory: ./apis/userjava
+
+jobs:
+  build:
+    name: userjava-push-job
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: azure/docker-login@v1
+      with:
+        login-server: openhack3j1036v7acr.azurecr.io
+        username: ${{ secrets.ACR_USR }}
+        password: ${{ secrets.ACR_PWD }}
+
+    - run: |
+        docker build . -t openhack3j1036v7acr.azurecr.io/devopsoh/api-user-java:${{ github.sha }}
+        docker push openhack3j1036v7acr.azurecr.io/devopsoh/api-user-java:${{ github.sha }}
+
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: "openhack3j1036v7userjava"
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_USERJAVA }}
+        images: "openhack3j1036v7acr.azurecr.io/devopsoh/api-user-java:${{ github.sha }}"
