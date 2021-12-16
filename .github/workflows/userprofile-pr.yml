@@ -1,0 +1,32 @@
+name: userprofile-pr
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "apis/userprofile/**"
+
+defaults:
+  run:
+    shell: bash
+    working-directory: apis/userprofile/
+env: 
+    NODE_VERSION: '12.x'
+jobs:
+  build:
+    name: userprofile-pr-job
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: npm install, build, and test
+      run: |
+        # Build and test the project, then
+        # deploy to Azure Web App.
+        npm install
+        npm run build --if-present
+        npm run test --if-present
