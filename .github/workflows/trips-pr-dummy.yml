@@ -1,0 +1,13 @@
+name: trips-pr
+
+on:
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - "apis/trips/**"
+jobs:
+  build:
+    name: trips-pr-job
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "No build required" '
