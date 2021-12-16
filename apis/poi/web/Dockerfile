@@ -21,9 +21,9 @@ WORKDIR /app
 #    https://vsupalov.com/docker-build-pass-environment-variables/
 ARG build_version="poi default"
 
-ENV SQL_USER="YourUserName" \
-SQL_PASSWORD="changeme" \
-SQL_SERVER="changeme.database.windows.net" \
+ENV SQL_USER="demousersa" \
+SQL_PASSWORD="demo@pass123" \
+SQL_SERVER="openhack3j1036v7sql.database.windows.net" \
 SQL_DBNAME="mydrivingDB" \
 WEB_PORT="8080" \
 WEB_SERVER_BASE_URI="http://0.0.0.0" \
