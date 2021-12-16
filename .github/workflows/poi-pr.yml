@@ -1,11 +1,11 @@
-name: poipipeline
+name: poi-pr
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "apis/poi/**"
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - "apis/poi/**"
   pull_request:
     branches: [main]
     paths:
@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: poipipelinejob
+    name: poi-pr-job
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
