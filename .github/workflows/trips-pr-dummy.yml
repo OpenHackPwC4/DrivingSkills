@@ -3,7 +3,7 @@ name: trips-pr
 on:
   pull_request:
     branches: [main]
-    paths:
+    paths-ignore:
       - "apis/trips/**"
 jobs:
   build:
