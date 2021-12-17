@@ -35,20 +35,20 @@ jobs:
           slot-name: "staging"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_POI_STA }}
           images: "openhack3j1036v7acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}"
-      
+
       - name: Healthcheck
         run: |
           chmod +x ./poi-health-check.sh
           ./poi-health-check.sh
-      
+
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_DEPLOY_SP }}
-  
+
       - name: Azure CLI script file
         uses: azure/CLI@v1
         with:
           azcliversion: 2.30.0
           inlineScript: |
-              az webapp deployment slot swap -name openhack3j1036v7poi --resource-group openhack3j1036v7rg --slot staging
+            az webapp deployment slot swap --name openhack3j1036v7poi --resource-group openhack3j1036v7rg --slot staging
