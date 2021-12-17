@@ -31,6 +31,7 @@ jobs:
 
       - uses: azure/webapps-deploy@v2
         with:
-          app-name: "openhack3j1036v7poi-staging"
+          app-name: "openhack3j1036v7poi"
+          slot-name: "staging"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_POI_STA }}
           images: "openhack3j1036v7acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}"
