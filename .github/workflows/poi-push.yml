@@ -47,8 +47,8 @@ jobs:
           creds: ${{ secrets.AZURE_DEPLOY_SP }}
   
       - name: Azure CLI script file
-          uses: azure/CLI@v1
-          with:
+        uses: azure/CLI@v1
+        with:
           azcliversion: 2.30.0
           inlineScript: |
               az webapp deployment slot swap -name openhack3j1036v7poi --resource-group openhack3j1036v7rg --slot staging
